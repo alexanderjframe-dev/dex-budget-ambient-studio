@@ -134,7 +134,7 @@
     }catch{return false;}
   })();
   if(fresh&&!localStorage.getItem(KEY_SEEN)){
-    window.addEventListener('load',()=>{if(!modal.open) open();},{once:true});
+    window.addEventListener('load',()=>{if(!modal.open && localStorage.getItem('dex_account_welcome_seen_v17'))open();},{once:true});
   }
   // Available for browser smoke tests without exposing or modifying financial data.
   window.DexGuidedQuest={open, status:()=>({lesson,completed:passed.size,cash:cashNow(),rent:session.rent,protected:session.rentProtected})};
