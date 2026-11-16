@@ -1,5 +1,17 @@
 'use strict';
-const GUEST_KEY='dex_budget_guided_beta_v17_preview';
+const GUEST_KEY='dex_budget_guided_beta_v18_preview';
+const PREVIEW_PREVIOUS_KEY='dex_budget_guided_beta_v17_preview';
+// Copy an older local budget once. Never mutate the original v1.7 guest record.
+try{
+  if(!localStorage.getItem(GUEST_KEY)){
+    const prior=localStorage.getItem(PREVIEW_PREVIOUS_KEY);
+    if(prior){
+      const parsed=JSON.parse(prior);
+      if(parsed&&parsed.version===1&&Array.isArray(parsed.transactions)&&Array.isArray(parsed.bills)&&Array.isArray(parsed.approvals)&&Number.isSafeInteger(parsed.startingCash))
+        localStorage.setItem(GUEST_KEY,prior);
+    }
+  }
+}catch{ /* Storage blocked: continue with a fresh local budget. */ }
 let KEY=GUEST_KEY;
 const $=id=>document.getElementById(id);
 const today=()=>{let d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};

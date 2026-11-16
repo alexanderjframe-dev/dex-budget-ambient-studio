@@ -8,7 +8,7 @@
     typeof cfg.publishableKey==='string' && cfg.publishableKey.length>12 &&
     !/service.role|sb_secret_/i.test(cfg.publishableKey);
   const $=id=>document.getElementById(id);
-  const ACCOUNT_PREFIX='dex_budget_account_v1_';
+  const ACCOUNT_PREFIX='dex_budget_account_v18_preview_';
   const WELCOME_KEY='dex_account_welcome_seen_v17';
   let client=null,user=null,remote=null,revision=0,active=false,blocked=false,dirty=false,loading=false;
   let syncTimer=null,cloudMsg='Local-device mode';

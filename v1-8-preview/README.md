@@ -42,3 +42,8 @@ This is a static Progressive Web App for GitHub Pages. Upload the site files to 
 
 ## Caveat
 Dex's safe-to-spend value remains a budgeting **estimate**, not a verified bank balance. The adaptive calculations are not changed in this release.
+
+## Preview data isolation
+- v1.8 stores guest records under a **new** local key. On first open, it copies (never deletes) valid v1.7 guest data from the same browser origin when v1.8 has no existing copy.
+- It also uses a separate local account cache key. Cloud authentication remains unconfigured in this preview; connecting it later requires testing cloud-revision behavior against v1.7.
+- Export a backup before changing devices or clearing website data.
